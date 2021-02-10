@@ -2,7 +2,7 @@ const Token = artifacts.require('./Token');
 
 require('chai').use(require('chai-as-promised')).should();
 
-contract('Token', (accounts) => {
+contract('Token', ([deployer]) => {
   const name = 'Merc Token';
   const symbol = 'MERC';
   const decimals = '18';
@@ -31,6 +31,11 @@ contract('Token', (accounts) => {
 
     it('tracks the total supply', async () => {
       const result = await token.totalSupply();
+      result.toString().should.equal(totalSupply);
+    });
+
+    it('assigns the total supply to the deployer', async () => {
+      const result = await token.balanceOf(deployer);
       result.toString().should.equal(totalSupply);
     });
   });
