@@ -6,7 +6,7 @@ pragma solidity >=0.6.0 <0.8.0;
 // Handle Trades - Charge fees
 
 // TODO:
-// [] Set the fee account
+// [X] Set the fee account
 // [] Deposit Ether
 // [] Withdraw Ether
 // [] Deposit tokens
@@ -22,8 +22,10 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract Exchange {
   // Variables
   address public feeAccount; // the account that receives exchange fees
+  uint256 public feePercent; // the fee percentage
 
-  constructor(address _feeAccount) {
+  constructor(address _feeAccount, uint256 _feePercent) {
     feeAccount = _feeAccount;
+    feePercent = _feePercent;
   }
 }
