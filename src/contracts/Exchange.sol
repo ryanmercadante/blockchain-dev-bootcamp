@@ -11,10 +11,10 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 // TODO:
 // [X] Set the fee account
 // [X] Deposit Ether
-// [] Withdraw Ether
+// [X] Withdraw Ether
 // [X] Deposit tokens
-// [] Withdraw tokens
-// [] Check Balances
+// [X] Withdraw tokens
+// [X] Check Balances
 // [] Make order
 // [] Cancel order
 // [] Fill order
@@ -75,5 +75,9 @@ contract Exchange {
     tokens[_token][msg.sender] = tokens[_token][msg.sender].sub(_amount);
     require(Token(_token).transfer(msg.sender, _amount));
     emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+  }
+
+  function balanceOf(address _token, address _user) public view returns(uint256) {
+    return tokens[_token][_user];
   }
 }
