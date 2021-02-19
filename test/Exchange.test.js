@@ -221,7 +221,7 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
   describe('checking balances', () => {
     beforeEach(async () => {
-      exchange.depositEther({
+      await exchange.depositEther({
         from: user1,
         value: ether(1),
       })
