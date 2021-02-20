@@ -15,8 +15,8 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 // [X] Deposit tokens
 // [X] Withdraw tokens
 // [X] Check Balances
-// [] Make order
-// [] Cancel order
+// [X] Make order
+// [X] Cancel order
 // [] Fill order
 // [] Charge fees
 
