@@ -5,7 +5,7 @@ const Token = artifacts.require('./Token')
 
 require('chai').use(require('chai-as-promised')).should()
 
-contract('Exchange', ([deployer, feeAccount, user1]) => {
+contract('Exchange', ([deployer, feeAccount, user1, user2]) => {
   let exchange
   let token
   const feePercent = 10
@@ -281,6 +281,69 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
       args.timestamp
         .toString()
         .length.should.be.at.least(1, 'timestamp is present')
+    })
+  })
+
+  describe('order actions', () => {
+    beforeEach(async () => {
+      // user1 deposits Ether
+      await exchange.depositEther({ from: user1, value: ether(1) })
+      // user1 makes an order to buy tokens with Ether
+      await exchange.makeOrder(
+        token.address,
+        tokens(1),
+        ETHER_ADDRESS,
+        ether(1),
+        { from: user1 },
+      )
+    })
+
+    describe('cancelling orders', () => {
+      let result
+
+      describe('success', () => {
+        beforeEach(async () => {
+          result = await exchange.cancelOrder('1', { from: user1 })
+        })
+
+        it('updates cancelled orders', async () => {
+          const orderCancelled = await exchange.orderCancelled(1)
+          orderCancelled.should.equal(true)
+        })
+
+        it('emits a Cancel event', async () => {
+          const [{ event, args }] = result.logs
+          event.should.equal('Cancel')
+          args.id.toString().should.equal('1', 'id is correct')
+          args.user.should.equal(user1, 'user is correct')
+          args.tokenGet.should.equal(token.address, 'tokenGet is correct')
+          args.amountGet
+            .toString()
+            .should.equal(tokens(1).toString(), 'amountGet is correct')
+          args.tokenGive.should.equal(ETHER_ADDRESS, 'tokenGive is correct')
+          args.amountGive
+            .toString()
+            .should.equal(ether(1).toString(), 'amountGive is correct')
+          args.timestamp
+            .toString()
+            .length.should.be.at.least(1, 'timestamp is present')
+        })
+      })
+
+      describe('failure', () => {
+        it('rejects invalid order ids', async () => {
+          const invalidOrderId = 99999
+          await exchange
+            .cancelOrder(invalidOrderId, { from: user1 })
+            .should.be.rejectedWith(EVM_REVERT)
+        })
+
+        it('rejects unauthorized cancelations', async () => {
+          await exchange
+            .cancelOrder('1', { from: user2 })
+            .should.be.rejectedWith(EVM_REVERT)
+        })
+      })
     })
   })
 })
