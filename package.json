@@ -43,7 +43,9 @@
     "eject": "react-scripts eject",
     "compile": "truffle compile",
     "test:exchange": "truffle test ./test/Exchange.test.js",
-    "prettier": "prettier --write 'src/contracts/**/*.sol'"
+    "test:token": "truffle test ./test/Token.test.js",
+    "prettier": "prettier --write 'src/contracts/**/*.sol'",
+    "truffle": "truffle"
   },
   "eslintConfig": {
     "extends": [
