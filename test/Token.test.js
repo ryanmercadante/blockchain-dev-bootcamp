@@ -1,4 +1,5 @@
-import { tokens, EVM_REVERT } from './helpers'
+import { EVM_REVERT } from '../utils/constants'
+import { tokens } from '../utils/helpers'
 
 const Token = artifacts.require('./Token')
 
