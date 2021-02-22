@@ -1,4 +1,5 @@
-import { tokens, ether, EVM_REVERT, ETHER_ADDRESS } from './helpers'
+import { EVM_REVERT, ETHER_ADDRESS } from '../utils/constants'
+import { tokens, ether } from '../utils/helpers'
 
 const Exchange = artifacts.require('./Exchange')
 const Token = artifacts.require('./Token')
