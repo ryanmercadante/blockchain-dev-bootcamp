@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import Web3 from 'web3'
-import { abi, networks } from '../abis/Token.json'
 import {
   loadWeb3Interaction,
   loadAccountInteraction,
+  loadTokenInteraction,
 } from '../store/interactions'
 
 import './App.css'
@@ -17,8 +16,7 @@ function App() {
     console.log('web3', web3)
     const networkId = await web3.eth.net.getId()
     const account = await loadAccountInteraction(web3, dispatch)
-    const { address } = networks[networkId]
-    const tokenContract = await new web3.eth.Contract(abi, address)
+    const tokenContract = await loadTokenInteraction(web3, networkId, dispatch)
     const totalSupply = await tokenContract.methods.totalSupply().call()
     console.log('supplu', totalSupply)
   }
