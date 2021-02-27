@@ -13,12 +13,10 @@ function App() {
 
   const loadBlockchainData = async () => {
     const web3 = loadWeb3Interaction(dispatch)
-    console.log('web3', web3)
-    const networkId = await web3.eth.net.getId()
     const account = await loadAccountInteraction(web3, dispatch)
+    const networkId = await web3.eth.net.getId()
     const tokenContract = await loadTokenInteraction(web3, networkId, dispatch)
-    const totalSupply = await tokenContract.methods.totalSupply().call()
-    console.log('supplu', totalSupply)
+    // const totalSupply = await tokenContract.methods.totalSupply().call()
   }
 
   useEffect(() => {

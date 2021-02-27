@@ -1,31 +1,29 @@
-import { createReducer } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
-import { LOAD_ACCOUNT, LOAD_WEB3 } from './constants'
+import { LOAD_ACCOUNT, LOAD_TOKEN, LOAD_WEB3 } from './types'
 
-// function web3(state = {}, { type, payload }) {
-//   switch (type) {
-//     case LOAD_WEB3:
-//       return { ...state, connection: payload.connection }
-//     default:
-//       return state
-//   }
-// }
-
-const web3Reducer = createReducer([], (builder) => {
-  builder
-    .addCase(LOAD_WEB3, (state, { payload }) => {
-      return { ...state, connection: payload.connection }
-    })
-    .addCase(LOAD_ACCOUNT, (state, { payload }) => {
-      return { ...state, account: payload.account }
-    })
-    .addDefaultCase((state) => {
+function web3(state = {}, { type, payload }) {
+  switch (type) {
+    case LOAD_WEB3:
+      return { ...state, connection: payload }
+    case LOAD_ACCOUNT:
+      return { ...state, account: payload }
+    default:
       return state
-    })
-})
+  }
+}
+
+function token(state = {}, { type, payload }) {
+  switch (type) {
+    case LOAD_TOKEN:
+      return { ...state, contract: payload }
+    default:
+      return state
+  }
+}
 
 const rootReducer = combineReducers({
-  web3Reducer,
+  web3,
+  token,
 })
 
 export default rootReducer
