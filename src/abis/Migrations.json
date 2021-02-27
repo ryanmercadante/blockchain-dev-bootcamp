@@ -43,18 +43,18 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ryan/code/dapps/blockchain-dev-bootcamp/src/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ryan/code/dapps/blockchain-dev-bootcamp/src/contracts/Migrations.sol\":{\"keccak256\":\"0x6641bf6a7ab4d59ea9035f61e9f55f5a0358f2363ddbebe4ec957401b23b7aa0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d59bd87bd782a879e5bd28cbd8bb26d6641820dfd8326ddb6555507975d3b8f9\",\"dweb:/ipfs/QmWQdU25PWXG1bZixmoj6TcXfsAkECSZHzzwJDTbKX57Tw\"]}},\"version\":1}",
-  "bytecode": "0x608060405260008054600160a060020a0319163317905534801561002257600080fd5b506101cc806100326000396000f3fe608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463445df0ac81146100625780638da5cb5b1461007c578063fdacd576146100ad575b600080fd5b61006a6100cc565b60408051918252519081900360200190f35b6100846100d2565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ca600480360360208110156100c357600080fd5b50356100ee565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff16331461015e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101646033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220d277ac1fb44109df23e34102a4ce0d69c1400cb9c869d9b69a738d27aa36257964736f6c63430007060033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463445df0ac81146100625780638da5cb5b1461007c578063fdacd576146100ad575b600080fd5b61006a6100cc565b60408051918252519081900360200190f35b6100846100d2565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ca600480360360208110156100c357600080fd5b50356100ee565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff16331461015e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101646033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220d277ac1fb44109df23e34102a4ce0d69c1400cb9c869d9b69a738d27aa36257964736f6c63430007060033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ryan/code/blockchain-dev-bootcamp/src/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ryan/code/blockchain-dev-bootcamp/src/contracts/Migrations.sol\":{\"keccak256\":\"0x6641bf6a7ab4d59ea9035f61e9f55f5a0358f2363ddbebe4ec957401b23b7aa0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d59bd87bd782a879e5bd28cbd8bb26d6641820dfd8326ddb6555507975d3b8f9\",\"dweb:/ipfs/QmWQdU25PWXG1bZixmoj6TcXfsAkECSZHzzwJDTbKX57Tw\"]}},\"version\":1}",
+  "bytecode": "0x608060405260008054600160a060020a0319163317905534801561002257600080fd5b506101cc806100326000396000f3fe608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463445df0ac81146100625780638da5cb5b1461007c578063fdacd576146100ad575b600080fd5b61006a6100cc565b60408051918252519081900360200190f35b6100846100d2565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ca600480360360208110156100c357600080fd5b50356100ee565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff16331461015e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101646033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220aa3e802dfb31c81011e16ed463ef484664e4cdb988be003f51c7367f4b1582d564736f6c63430007060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463445df0ac81146100625780638da5cb5b1461007c578063fdacd576146100ad575b600080fd5b61006a6100cc565b60408051918252519081900360200190f35b6100846100d2565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ca600480360360208110156100c357600080fd5b50356100ee565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff16331461015e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101646033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220aa3e802dfb31c81011e16ed463ef484664e4cdb988be003f51c7367f4b1582d564736f6c63430007060033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "66:340:1:-:0;;;90:33;;;-1:-1:-1;;;;;;90:33:1;113:10;90:33;;;66:340;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "66:340:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;127:39;;;:::i;:::-;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;298:106;;;;;;;;;;;;;;;;-1:-1:-1;298:106:1;;:::i;:::-;;127:39;;;;:::o;90:33::-;;;;;;:::o;298:106::-;221:5;;;;207:10;:19;199:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;363:24:::1;:36:::0;298:106::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint256 public last_completed_migration;\n\n  modifier restricted() {\n    require(msg.sender == owner, \"This function is restricted to the contract's owner\");\n    _;\n  }\n\n  function setCompleted(uint256 completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "/Users/ryan/code/dapps/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
+  "sourcePath": "/Users/ryan/code/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
   "ast": {
-    "absolutePath": "/Users/ryan/code/dapps/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
+    "absolutePath": "/Users/ryan/code/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
     "exportedSymbols": {
       "Migrations": [
         689
@@ -448,7 +448,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/ryan/code/dapps/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
+      "absolutePath": "/Users/ryan/code/blockchain-dev-bootcamp/src/contracts/Migrations.sol",
       "exportedSymbols": {
         "Migrations": [
           689
@@ -891,12 +891,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x6AB50786de18e51573507AD579f81B8B95c12755",
-      "transactionHash": "0x113aaca341fcf36b9c910dd18cfa89d667eba008844dfd1d6c931087d0a9b2c0"
+      "address": "0x045CD432fc7Ab601527A69C26c39eb154094e972",
+      "transactionHash": "0xffd6d55720f76627ddc182e726c1c13003d32809f512acd90af251f38c2b7c56"
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-02-21T15:00:55.368Z",
+  "updatedAt": "2021-02-27T23:04:56.344Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
