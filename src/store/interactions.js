@@ -14,9 +14,9 @@ export const loadAccountInteraction = async (web3, dispatch) => {
   return account
 }
 
-export const loadTokenInteraction = async (web3, networkId, dispatch) => {
+export const loadTokenInteraction = (web3, networkId, dispatch) => {
   try {
-    const contract = await web3.eth.Contract(abi, networks[networkId].address)
+    const contract = new web3.eth.Contract(abi, networks[networkId].address)
     dispatch(loadToken(contract))
     return contract
   } catch (err) {
