@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { createLogger } from 'redux-logger'
-import rootReducer from './reducers'
+import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import rootReducer from './reducers';
 
-const loggerMiddleware = createLogger()
+const middleware = [...getDefaultMiddleware(), logger];
 
 export default function configureAppStore(preloadedState) {
   const store = configureStore({
@@ -10,7 +10,7 @@ export default function configureAppStore(preloadedState) {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(loggerMiddleware),
     preloadedState,
-  })
+  });
 
-  return store
+  return store;
 }
