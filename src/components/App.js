@@ -20,8 +20,22 @@ function App() {
     const web3 = loadWeb3Interaction(dispatch)
     await loadAccountInteraction(web3, dispatch)
     const networkId = await web3.eth.net.getId()
-    loadTokenInteraction(web3, networkId, dispatch)
-    loadExchangeInteraction(web3, networkId, dispatch)
+
+    const token = loadTokenInteraction(web3, networkId, dispatch)
+    if (!token) {
+      alert(
+        'Token smart contract not deployed to the current network. Please select another network with Metamask.',
+      )
+      return
+    }
+
+    const exchange = loadExchangeInteraction(web3, networkId, dispatch)
+    if (!exchange) {
+      alert(
+        'Exchange smart contract not deployed to the current network. Please select another network with Metamask.',
+      )
+      return
+    }
   }
 
   useEffect(() => {
