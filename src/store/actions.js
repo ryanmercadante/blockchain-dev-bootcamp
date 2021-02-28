@@ -1,4 +1,10 @@
-import { LOAD_ACCOUNT, LOAD_WEB3, LOAD_TOKEN, LOAD_EXCHANGE } from './types'
+import {
+  LOAD_ACCOUNT,
+  LOAD_WEB3,
+  LOAD_TOKEN,
+  LOAD_EXCHANGE,
+  LOAD_CANCELLED_ORDERS,
+} from './types'
 
 // WEB3
 export const loadWeb3 = (web3) => ({
@@ -18,4 +24,9 @@ export const loadToken = (contract) => ({ type: LOAD_TOKEN, payload: contract })
 export const loadExchange = (contract) => ({
   type: LOAD_EXCHANGE,
   payload: contract,
+})
+
+export const loadCancelledOrders = (orders) => ({
+  type: LOAD_CANCELLED_ORDERS,
+  payload: orders,
 })

@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadAllOrders } from '../store/interactions'
+import { exchangeSelector } from '../store/selectors'
 
 export const Content = () => {
+  const dispatch = useDispatch()
+  const exchange = useSelector(exchangeSelector)
+
+  const loadBlockchainData = async (_exchange, dispatch) => {
+    await loadAllOrders(_exchange, dispatch)
+  }
+
+  useEffect(() => {
+    loadBlockchainData(exchange, dispatch)
+  }, [])
+
   return (
     <div className="content">
       <div className="vertical-split">
