@@ -1,3 +1,4 @@
 export const LOAD_WEB3 = 'LOAD_WEB3'
 export const LOAD_ACCOUNT = 'LOAD_ACCOUNT'
 export const LOAD_TOKEN = 'LOAD_TOKEN'
+export const LOAD_EXCHANGE = 'LOAD_EXCHANGE'

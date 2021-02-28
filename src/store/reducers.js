@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOAD_ACCOUNT, LOAD_TOKEN, LOAD_WEB3 } from './types'
+import { LOAD_ACCOUNT, LOAD_TOKEN, LOAD_WEB3, LOAD_EXCHANGE } from './types'
 
 function web3(state = {}, { type, payload }) {
   switch (type) {
@@ -21,9 +21,19 @@ function token(state = {}, { type, payload }) {
   }
 }
 
+function exchange(state = {}, { type, payload }) {
+  switch (type) {
+    case LOAD_EXCHANGE:
+      return { ...state, contract: payload }
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   web3,
   token,
+  exchange,
 })
 
 export default rootReducer

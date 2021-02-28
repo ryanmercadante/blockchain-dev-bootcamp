@@ -1,6 +1,7 @@
 import Web3 from 'web3'
-import { loadAccount, loadToken, loadWeb3 } from './actions'
-import { abi, networks } from '../abis/Token.json'
+import { loadAccount, loadExchange, loadToken, loadWeb3 } from './actions'
+import Token from '../abis/Token.json'
+import Exchange from '../abis/Exchange.json'
 
 export const loadWeb3Interaction = (dispatch) => {
   const web3 = new Web3(Web3.givenProvider || 'ws://localhost:7545')
@@ -14,10 +15,20 @@ export const loadAccountInteraction = async (web3, dispatch) => {
   return account
 }
 
-export const loadTokenInteraction = (web3, networkId, dispatch) => {
+const _loadContract = (web3, networkId, dispatch, smartContract) => {
+  const { abi, networks, contractName } = smartContract
   try {
     const contract = new web3.eth.Contract(abi, networks[networkId].address)
-    dispatch(loadToken(contract))
+    switch (contractName) {
+      case 'Token':
+        dispatch(loadToken(contract))
+        break
+      case 'Exchange':
+        dispatch(loadExchange(contract))
+        break
+      default:
+        break
+    }
     return contract
   } catch (err) {
     alert(
@@ -25,4 +36,12 @@ export const loadTokenInteraction = (web3, networkId, dispatch) => {
     )
     return null
   }
+}
+
+export const loadTokenInteraction = (web3, networkId, dispatch) => {
+  return _loadContract(web3, networkId, dispatch, Token)
+}
+
+export const loadExchangeInteraction = (web3, networkId, dispatch) => {
+  return _loadContract(web3, networkId, dispatch, Exchange)
 }
