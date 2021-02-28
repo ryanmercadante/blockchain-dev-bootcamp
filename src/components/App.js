@@ -6,7 +6,7 @@ import {
   loadTokenInteraction,
   loadExchangeInteraction,
 } from '../store/interactions'
-import { accountSelector } from '../store/selectors'
+import { contractsLoadedSelector } from '../store/selectors'
 import { Navbar } from './Navbar'
 import { Content } from './Content'
 
@@ -14,15 +14,14 @@ import './App.css'
 
 function App() {
   const dispatch = useDispatch()
-  const account = useSelector(accountSelector)
+  const contractsLoaded = useSelector(contractsLoadedSelector)
 
   const loadBlockchainData = async () => {
     const web3 = loadWeb3Interaction(dispatch)
-    const account = await loadAccountInteraction(web3, dispatch)
+    await loadAccountInteraction(web3, dispatch)
     const networkId = await web3.eth.net.getId()
-    const tokenContract = loadTokenInteraction(web3, networkId, dispatch)
-    const exchangeContract = loadExchangeInteraction(web3, networkId, dispatch)
-    // const totalSupply = await tokenContract.methods.totalSupply().call()
+    loadTokenInteraction(web3, networkId, dispatch)
+    loadExchangeInteraction(web3, networkId, dispatch)
   }
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Content />
+      {contractsLoaded ? <Content /> : <div className="content"></div>}
     </div>
   )
 }

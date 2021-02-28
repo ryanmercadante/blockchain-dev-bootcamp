@@ -15,7 +15,7 @@ function web3(state = {}, { type, payload }) {
 function token(state = {}, { type, payload }) {
   switch (type) {
     case LOAD_TOKEN:
-      return { ...state, contract: payload }
+      return { ...state, loaded: true, contract: payload }
     default:
       return state
   }
@@ -24,7 +24,7 @@ function token(state = {}, { type, payload }) {
 function exchange(state = {}, { type, payload }) {
   switch (type) {
     case LOAD_EXCHANGE:
-      return { ...state, contract: payload }
+      return { ...state, loaded: true, contract: payload }
     default:
       return state
   }
