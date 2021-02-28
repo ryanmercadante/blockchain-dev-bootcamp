@@ -4,6 +4,7 @@ import {
   loadWeb3Interaction,
   loadAccountInteraction,
   loadTokenInteraction,
+  loadExchangeInteraction,
 } from '../store/interactions'
 
 import './App.css'
@@ -16,6 +17,7 @@ function App() {
     const account = await loadAccountInteraction(web3, dispatch)
     const networkId = await web3.eth.net.getId()
     const tokenContract = loadTokenInteraction(web3, networkId, dispatch)
+    const exchangeContract = loadExchangeInteraction(web3, networkId, dispatch)
     // const totalSupply = await tokenContract.methods.totalSupply().call()
   }
 
