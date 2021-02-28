@@ -8,6 +8,7 @@ import {
 } from '../store/interactions'
 import { accountSelector } from '../store/selectors'
 import { Navbar } from './Navbar'
+import { Content } from './Content'
 
 import './App.css'
 
@@ -31,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Content />
     </div>
   )
 }
