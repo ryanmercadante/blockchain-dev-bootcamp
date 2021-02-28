@@ -5,6 +5,8 @@ import {
   LOAD_WEB3,
   LOAD_EXCHANGE,
   LOAD_CANCELLED_ORDERS,
+  LOAD_FILLED_ORDERS,
+  LOAD_ALL_ORDERS,
 } from './types'
 
 function web3(state = {}, { type, payload }) {
@@ -33,6 +35,10 @@ function exchange(state = {}, { type, payload }) {
       return { ...state, loaded: true, contract: payload }
     case LOAD_CANCELLED_ORDERS:
       return { ...state, cancelledOrders: { loaded: true, data: payload } }
+    case LOAD_FILLED_ORDERS:
+      return { ...state, filledOrders: { loaded: true, data: payload } }
+    case LOAD_ALL_ORDERS:
+      return { ...state, allOrders: { loaded: true, data: payload } }
     default:
       return state
   }

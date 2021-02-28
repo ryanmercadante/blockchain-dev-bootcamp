@@ -1,8 +1,10 @@
 import Web3 from 'web3'
 import {
   loadAccount,
+  loadAllOrders,
   loadCancelledOrders,
   loadExchange,
+  loadFilledOrders,
   loadToken,
   loadWeb3,
 } from './actions'
@@ -52,7 +54,7 @@ export const loadExchangeInteraction = (web3, networkId, dispatch) => {
   return _loadContract(web3, networkId, dispatch, Exchange)
 }
 
-export const loadAllOrders = async (exchange, dispatch) => {
+export const loadAllOrdersInteraction = async (exchange, dispatch) => {
   // Fetch cancelled orders with the "Cancel" event stream
   const cancelStream = await exchange.getPastEvents('Cancel', {
     fromBlock: 0,
@@ -64,6 +66,22 @@ export const loadAllOrders = async (exchange, dispatch) => {
   dispatch(loadCancelledOrders(cancelledOrders))
 
   // Fetch filled orders with the "Trade" event stream
+  const tradeStream = await exchange.getPastEvents('Trade', {
+    fromBlock: 0,
+    toBlock: 'latest',
+  })
+  // Format filled orders
+  const filledOrders = tradeStream.map((event) => event.returnValues)
+  // Add filled orders to the redux store
+  dispatch(loadFilledOrders(filledOrders))
 
   // Fetch all orders with the "Order" event stream
+  const orderStream = await exchange.getPastEvents('Order', {
+    fromBlock: 0,
+    toBlock: 'latest',
+  })
+  // Format all orders
+  const allOrders = orderStream.map((event) => event.returnValues)
+  // Add all orders to the redux store
+  dispatch(loadAllOrders(allOrders))
 }

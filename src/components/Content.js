@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadAllOrders } from '../store/interactions'
+import { loadAllOrdersInteraction } from '../store/interactions'
 import { exchangeSelector } from '../store/selectors'
 
 export const Content = () => {
@@ -8,7 +8,7 @@ export const Content = () => {
   const exchange = useSelector(exchangeSelector)
 
   const loadBlockchainData = async (_exchange, dispatch) => {
-    await loadAllOrders(_exchange, dispatch)
+    await loadAllOrdersInteraction(_exchange, dispatch)
   }
 
   useEffect(() => {
