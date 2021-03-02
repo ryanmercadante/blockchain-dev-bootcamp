@@ -18,3 +18,16 @@ export const contractsLoadedSelector = createSelector(
   exchangeLoaded,
   (tl, el) => tl && el,
 )
+
+const filledOrdersLoaded = (state) =>
+  get(state, 'exchange.filledOrders.loaded', false)
+export const filledOrdersLoadedSelector = createSelector(
+  filledOrdersLoaded,
+  (fol) => fol,
+)
+
+const filledOrders = (state) => get(state, 'exchange.filledOrders.data', [])
+export const filledOrdersSelector = createSelector(filledOrders, (orders) => {
+  // Sort orders by date descending for display
+  orders = orders.sort((a, b) => b.timestamp - a.timestamp)
+})
