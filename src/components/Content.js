@@ -84,9 +84,7 @@ export const Content = () => {
           </div>
         </div>
       </div>
-      <div className="vertical">
-        <Trades />
-      </div>
+      <Trades />
     </div>
   )
 }
