@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get, reject } from 'lodash'
 import { createSelector } from 'reselect'
 import moment from 'moment'
 import { ETHER_ADDRESS, tokens, ether, GREEN, RED } from '../helpers'
@@ -21,6 +21,27 @@ export const contractsLoadedSelector = createSelector(
   (tl, el) => tl && el,
 )
 
+// All Orders
+const allOrdersLoaded = (state) =>
+  get(state, 'exchange.allOrders.loaded', false)
+const allOrders = (state) => get(state, 'exchange.allOrders.data', [])
+
+// Cancelled Orders
+const cancelledOrdersLoaded = (state) =>
+  get(state, 'exchange.cancelledOrders.loaded', false)
+export const cancelledOrdersLoadedSelector = createSelector(
+  cancelledOrdersLoaded,
+  (col) => col,
+)
+
+const cancelledOrders = (state) =>
+  get(state, 'exchange.cancelledOrders.data', [])
+export const cancelledOrdersSelector = createSelector(
+  cancelledOrders,
+  (co) => co,
+)
+
+// Filled Orders
 const filledOrdersLoaded = (state) =>
   get(state, 'exchange.filledOrders.loaded', false)
 export const filledOrdersLoadedSelector = createSelector(
@@ -97,3 +118,30 @@ const decorateFilledOrder = (order, previousOrder) => {
     tokenPriceClass: tokenPriceClass(order.tokenPrice, order.id, previousOrder),
   }
 }
+
+const openOrders = (state) => {
+  const all = allOrders(state)
+  const cancelled = cancelledOrders(state)
+  const filled = filledOrders(state)
+
+  const openOrders = reject(all, (order) => {
+    const orderFilled = filled.some((o) => o.id === order.id)
+    const orderCancelled = cancelled.some((o) => o.id === order.id)
+    return orderFilled || orderCancelled
+  })
+
+  return openOrders
+}
+
+// To get the order book, we need all orders minus all the filled
+// orders and minus all the cancelled orders
+const orderBookLoaded = (state) =>
+  cancelledOrdersLoaded(state) &&
+  filledOrdersLoaded(state) &&
+  allOrdersLoaded(state)
+
+// Create the order book
+export const orderBookSelector = createSelector(openOrders, (orders) => {
+  // Decorate orders
+  return orders
+})
