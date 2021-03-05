@@ -133,6 +133,24 @@ const openOrders = (state) => {
   return openOrders
 }
 
+const decorateOrderBookOrder = (order) => {
+  const orderType = order.tokenGive === ETHER_ADDRESS ? 'buy' : 'sell'
+  return {
+    ...order,
+    orderType,
+    orderTypeClass: orderType === 'buy' ? GREEN : RED,
+    orderFillClass: orderType === 'buy' ? 'sell' : 'buy',
+  }
+}
+
+const decorateOrderBookOrders = (orders) => {
+  return orders.map((order) => {
+    order = decorateOrder(order)
+    order = decorateOrderBookOrder(order)
+    return order
+  })
+}
+
 // To get the order book, we need all orders minus all the filled
 // orders and minus all the cancelled orders
 const orderBookLoaded = (state) =>
@@ -143,5 +161,6 @@ const orderBookLoaded = (state) =>
 // Create the order book
 export const orderBookSelector = createSelector(openOrders, (orders) => {
   // Decorate orders
+  orders = decorateOrderBookOrders(orders)
   return orders
 })
